@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Hotel_Management" Class="Hotel_ManagementDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-JAO4LI5;Initial Catalog=Hotel_Management;Integrated Security=True;Encrypt=True;Trust Server Certificate=True" SettingsObjectName="PROIECT_BAZE.Properties.Settings" SettingsPropertyName="Hotel_ManagementConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Achizitii" Member="Achizitiis">
+    <Type Name="Achizitii">
+      <Column Name="ID_Achizitie" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_Detalii_Achizitie" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_Angajat" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Data_Achizitiei" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Association Name="Angajati_Achizitii" Member="Angajati" ThisKey="ID_Angajat" OtherKey="ID_Angajat" Type="Angajati" IsForeignKey="true" />
+      <Association Name="Detalii_Achizitie_Achizitii" Member="Detalii_Achizitie" ThisKey="ID_Detalii_Achizitie" OtherKey="ID" Type="Detalii_Achizitie" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Angajati" Member="Angajatis">
+    <Type Name="Angajati">
+      <Column Name="ID_Angajat" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nume" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Varsta" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_Functie" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Angajati_Achizitii" Member="Achizitiis" ThisKey="ID_Angajat" OtherKey="ID_Angajat" Type="Achizitii" />
+      <Association Name="Angajati_Plati" Member="Platis" ThisKey="ID_Angajat" OtherKey="ID_Angajat" Type="Plati" />
+      <Association Name="Angajati_Rapoarte" Member="Rapoartes" ThisKey="ID_Angajat" OtherKey="ID_Angajat" Type="Rapoarte" />
+      <Association Name="Functii_Angajati" Member="Functii" ThisKey="ID_Functie" OtherKey="ID_Functie" Type="Functii" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Camere" Member="Cameres">
+    <Type Name="Camere">
+      <Column Name="ID_Camera" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nr_Camera" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Tip_Camera" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Nr_Max_Persoane" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Pret_Noapte" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Association Name="Camere_Rezervari_Camere" Member="Rezervari_Cameres" ThisKey="ID_Camera" OtherKey="ID_Camera" Type="Rezervari_Camere" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Clienti" Member="Clientis">
+    <Type Name="Clienti">
+      <Column Name="ID_Client" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Telefon" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Nume" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Username" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Parola" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Clienti_Plati" Member="Platis" ThisKey="ID_Client" OtherKey="ID_Client" Type="Plati" />
+      <Association Name="Clienti_Recenzii" Member="Recenziis" ThisKey="ID_Client" OtherKey="ID_Client" Type="Recenzii" />
+      <Association Name="Clienti_Rezervari" Member="Rezervaris" ThisKey="ID_Client" OtherKey="ID_Client" Type="Rezervari" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Controale_Calitate" Member="Controale_Calitates">
+    <Type Name="Controale_Calitate">
+      <Column Name="ID_Control" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Tip_Control" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Data_Controlului" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ID_Raport" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Rapoarte_Controale_Calitate" Member="Rapoarte" ThisKey="ID_Raport" OtherKey="ID_Raport" Type="Rapoarte" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Detalii_Achizitie" Member="Detalii_Achizities">
+    <Type Name="Detalii_Achizitie">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_Produs" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_Furnizor" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Cantitate" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Detalii_Achizitie_Achizitii" Member="Achizitiis" ThisKey="ID" OtherKey="ID_Detalii_Achizitie" Type="Achizitii" />
+      <Association Name="Furnizori_Detalii_Achizitie" Member="Furnizori" ThisKey="ID_Furnizor" OtherKey="ID_Furnizor" Type="Furnizori" IsForeignKey="true" />
+      <Association Name="Produse_Detalii_Achizitie" Member="Produse" ThisKey="ID_Produs" OtherKey="ID_Produs" Type="Produse" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Functii" Member="Functiis">
+    <Type Name="Functii">
+      <Column Name="ID_Functie" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nume" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Renumeratie" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Departament" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Functii_Angajati" Member="Angajatis" ThisKey="ID_Functie" OtherKey="ID_Functie" Type="Angajati" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Furnizori" Member="Furnizoris">
+    <Type Name="Furnizori">
+      <Column Name="ID_Furnizor" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nume" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Sediu" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="Furnizori_Detalii_Achizitie" Member="Detalii_Achizities" ThisKey="ID_Furnizor" OtherKey="ID_Furnizor" Type="Detalii_Achizitie" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Plati" Member="Platis">
+    <Type Name="Plati">
+      <Column Name="ID_Plata" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_Rezervare" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_Client" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_Angajat" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Suma_Totala" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+      <Column Name="Data_Tranzactiei" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Tipul_Tranzactiei" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Association Name="Angajati_Plati" Member="Angajati" ThisKey="ID_Angajat" OtherKey="ID_Angajat" Type="Angajati" IsForeignKey="true" />
+      <Association Name="Clienti_Plati" Member="Clienti" ThisKey="ID_Client" OtherKey="ID_Client" Type="Clienti" IsForeignKey="true" />
+      <Association Name="Rezervari_Plati" Member="Rezervari" ThisKey="ID_Rezervare" OtherKey="ID_Rezervare" Type="Rezervari" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Produse" Member="Produses">
+    <Type Name="Produse">
+      <Column Name="ID_Produs" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nume" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Cantitate" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Cantitate_Minima" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Produse_Detalii_Achizitie" Member="Detalii_Achizities" ThisKey="ID_Produs" OtherKey="ID_Produs" Type="Detalii_Achizitie" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Rapoarte" Member="Rapoartes">
+    <Type Name="Rapoarte">
+      <Column Name="ID_Raport" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Inspector_Responsabil" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Verdict" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Sectoare_Verificate" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ID_Angajat" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Rapoarte_Controale_Calitate" Member="Controale_Calitates" ThisKey="ID_Raport" OtherKey="ID_Raport" Type="Controale_Calitate" />
+      <Association Name="Angajati_Rapoarte" Member="Angajati" ThisKey="ID_Angajat" OtherKey="ID_Angajat" Type="Angajati" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Recenzii" Member="Recenziis">
+    <Type Name="Recenzii">
+      <Column Name="ID_Recenzie" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_Client" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Nota" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Column Name="Descriere_Text" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="Clienti_Recenzii" Member="Clienti" ThisKey="ID_Client" OtherKey="ID_Client" Type="Clienti" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Rezervari" Member="Rezervaris">
+    <Type Name="Rezervari">
+      <Column Name="ID_Rezervare" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_Client" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Data_Rezervarii" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Durata_Cazarii" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Check_In" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Check_Out" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="All_Inclusive" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="Half_Board" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="Acces_Spa" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="Acces_Piscina" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Column Name="Status_Plata" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Association Name="Rezervari_Plati" Member="Platis" ThisKey="ID_Rezervare" OtherKey="ID_Rezervare" Type="Plati" />
+      <Association Name="Rezervari_Rezervari_Camere" Member="Rezervari_Cameres" ThisKey="ID_Rezervare" OtherKey="ID_Rezervare" Type="Rezervari_Camere" />
+      <Association Name="Clienti_Rezervari" Member="Clienti" ThisKey="ID_Client" OtherKey="ID_Client" Type="Clienti" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Rezervari_Camere" Member="Rezervari_Cameres">
+    <Type Name="Rezervari_Camere">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_Rezervare" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_Camera" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Camere_Rezervari_Camere" Member="Camere" ThisKey="ID_Camera" OtherKey="ID_Camera" Type="Camere" IsForeignKey="true" />
+      <Association Name="Rezervari_Rezervari_Camere" Member="Rezervari" ThisKey="ID_Rezervare" OtherKey="ID_Rezervare" Type="Rezervari" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

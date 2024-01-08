@@ -1,0 +1,219 @@
+﻿<Window x:Class="PROIECT_BAZE.View.ProfileView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PROIECT_BAZE.View"
+        mc:Ignorable="d"
+        Title="MyProfile" Height="550" Width="800"
+       WindowStyle="None"
+       ResizeMode="NoResize"
+       WindowStartupLocation="CenterScreen"
+       MouseDown="Window_MouseDown"
+       Background="Transparent"
+       AllowsTransparency="True">
+    <Grid>
+        <Border CornerRadius="12">
+
+            <Border.Background>
+                <ImageBrush ImageSource="/Images/MMPalmTreeImage4.jpg" />
+
+            </Border.Background>
+
+            <Border CornerRadius="10"
+            Background="#2b5432"
+            BorderBrush="#f5f0ac"
+            BorderThickness="2"
+            Opacity="0.95">
+
+                <Grid>
+
+                    <Grid.ColumnDefinitions>
+
+                        <ColumnDefinition Width="218"/>
+
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition/>
+
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" Grid.ColumnSpan="2">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="25"/>
+                            <ColumnDefinition Width="25"/>
+                            <ColumnDefinition Width="5"/>
+                        </Grid.ColumnDefinitions>
+
+
+
+                        <TextBlock Text="MY PROFILE"
+                               Foreground="Beige"
+                               FontSize="11"
+                               FontFamily="PanRoman"
+                               Grid.Column="0"
+                               VerticalAlignment="Center"
+                               Margin="10,0,0,0"/>
+
+                        <Button x:Name="btnMinimize"
+                            Opacity="1"
+                            Background="Beige"
+                            BorderThickness="0"
+                            Content="-"
+                            FontFamily="PanRoman"
+                            FontSize="10"
+                            Foreground="Black"
+                            Cursor="Arrow"
+                            Grid.Column="2"
+                            Click="btnMinimize_Click"
+>
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="Beige"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="Green"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+
+                                </Style>
+                            </Button.Style>
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Width="18" Height="18"
+                                        CornerRadius="9"
+                                        Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center"/>
+
+
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+
+                        </Button>
+
+                        <Button x:Name="btnClose"
+                            Opacity="1"
+                            Background="Beige"
+                            BorderThickness="0"
+                            Content="X"
+                            FontFamily="PanRoman"
+                            FontSize="10"
+                            Foreground="Black"
+                            Cursor="Arrow"
+                            Grid.Column="3"
+                             Height="30" VerticalAlignment="Top"
+                            Click="btnClose_Click">
+                            <Button.Style>
+                                <Style TargetType="Button">
+                                    <Setter Property="Background" Value="Beige"/>
+                                    <Style.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter Property="Background" Value="Green"/>
+                                        </Trigger>
+                                    </Style.Triggers>
+
+                                </Style>
+                            </Button.Style>
+                            <Button.Template>
+                                <ControlTemplate TargetType="Button">
+                                    <Border Width="18" Height="18"
+                                        CornerRadius="9"
+                                        Background="{TemplateBinding Background}">
+                                        <ContentPresenter VerticalAlignment="Center"
+                                                        HorizontalAlignment="Center"/>
+
+
+                                    </Border>
+                                </ControlTemplate>
+                            </Button.Template>
+                        </Button>
+                    </Grid>
+                    <StackPanel Height="500"  Grid.Row="1" Background="Beige" VerticalAlignment="Top" Margin="10,0,0,0">
+                        <ListView x:Name="listView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
+                              FontFamily="PanRoman" 
+                              FontSize="14" 
+                              Foreground="White"
+                              BorderBrush="Transparent"
+                              Margin="0,250,0,0"
+                              SelectionChanged="listView_SelectionChanged"
+                             
+                               
+                              FontWeight="Bold" Height="245">
+                            <ListViewItem Height="40" Background="Beige">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="D:\ANUL III\SEM I\PROIECTBD\PROIECT_BAZE\PROIECT_BAZE\Images\icons8-edit-50.png" Height="20" VerticalAlignment="Center"/>
+                                    <TextBlock Margin="15 0 0 0" Text="Edit profile" VerticalAlignment="Center" Foreground="#FF2B5432"/>
+                                </StackPanel>
+                            </ListViewItem>
+                            <ListViewItem  x:Name="bookings" Height="40" Background="Beige" Selected="ListViewItem_Selected">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="D:\ANUL III\SEM I\PROIECTBD\PROIECT_BAZE\PROIECT_BAZE\Images\icons8-house-52.png" Height="20" VerticalAlignment="Center"/>
+                                    <TextBlock Margin="15 0 0 0" Text="My bookings" VerticalAlignment="Center" Foreground="#FF2B5432"/>
+                                </StackPanel>
+                            </ListViewItem>
+                            <ListViewItem  x:Name="plata"     Height="40" Background="Beige" Selected="plata_Selected">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="D:\ANUL III\SEM I\PROIECTBD\PROIECT_BAZE\PROIECT_BAZE\Images\icons8-receipts-64.png" Height="20" VerticalAlignment="Center"/>
+                                    <TextBlock Margin="15 0 0 0" Text="My receipts" VerticalAlignment="Center" Foreground="#FF2B5432"/>
+                                </StackPanel>
+                            </ListViewItem>
+                            <ListViewItem Height="40" Background="Beige">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="D:\ANUL III\SEM I\PROIECTBD\PROIECT_BAZE\PROIECT_BAZE\Images\icons8-gift-50.png" Height="20" VerticalAlignment="Center"/>
+                                    <TextBlock Margin="15 0 0 0" Text="Offers" VerticalAlignment="Center" Foreground="#FF2B5432"/>
+                                </StackPanel>
+                            </ListViewItem>
+                            <ListViewItem Height="40" Background="Beige" Selected="ListViewItem_Selected_1">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="D:\ANUL III\SEM I\PROIECTBD\PROIECT_BAZE\PROIECT_BAZE\Images\icons8-reviews-66.png" Height="20" VerticalAlignment="Center"/>
+                                    <TextBlock Margin="15 0 0 0" Text="My reviews" VerticalAlignment="Center" Foreground="#FF2B5432"/>
+                                </StackPanel>
+                            </ListViewItem>
+                            <ListViewItem Height="40" Background="Beige">
+                                <StackPanel Orientation="Horizontal">
+                                    <Image Source="D:\ANUL III\SEM I\PROIECTBD\PROIECT_BAZE\PROIECT_BAZE\Images\icons8-log-out-50.png" Height="20" VerticalAlignment="Center"/>
+                                    <TextBlock Margin="15 0 0 0" Text="Log out" VerticalAlignment="Center" Foreground="#FF2B5432"/>
+                                </StackPanel>
+                            </ListViewItem>
+
+                        </ListView>
+
+
+                    </StackPanel>
+                    <TextBox x:Name="Nume_Client" VerticalAlignment="Top" HorizontalAlignment="Left" Width="190" Height="30"
+                     FontFamily="PanRoman" FontStyle="Normal" Foreground="Green" Background="Beige"
+                     BorderBrush="Transparent" BorderThickness="0"
+                     Text="NUME SI PRENUME DIN BD"
+                     Margin="18,193,0,0" 
+                     Grid.Row="1" 
+                     TextAlignment="Center" TextChanged="TextBox_TextChanged"/>
+                    <StackPanel x:Name="editFieldsPanel" Grid.Row="1" Grid.Column="1" Margin="0,100,0,0" Visibility="Collapsed">
+                        <TextBlock x:Name="txtNume1" Text="First Name:" Foreground="Beige" FontSize="15" Margin="100,10,10,0" />
+                        <TextBox x:Name="txtNume" Text="{Binding Nume}" Margin="100,10,200,10"/>
+
+                        <TextBlock x:Name="txtPrenume1" Text="Last Name:" Foreground="Beige" FontSize="15" Margin="100,10,10,0"/>
+                        <TextBox x:Name="txtPrenume" Text="{Binding Prenume}" Margin="100,10,200,10" />
+
+                        <TextBlock x:Name="txtAdresa1" Text="Address:" Foreground="Beige" FontSize="15" Margin="100,10,10,0" />
+                        <TextBox x:Name="txtAdresa" Text="{Binding Adresa}" Margin="100,10,200,10"/>
+
+                        <TextBlock x:Name="dpDataNasterii1" Text="Birth Date:" Foreground="Beige" FontSize="15" Margin="100,10,10,0" />
+                        <DatePicker x:Name="dpDataNasterii" SelectedDate="{Binding DataNasterii}" Margin="100,10,200,10"/>
+                        <Button Content="Done" Height="30" Margin="200,10,300,10" Click="btnDone_Click" Grid.Column="1" Grid.Row="1" />
+                        <Button Content="Save" Height="30" Margin="200,10,300,10" Click="btnSave_Click" RenderTransformOrigin="-0.188,0.6" />
+                    </StackPanel>
+
+                    
+                    
+                </Grid>
+            </Border>
+        </Border>
+
+    </Grid>
+
+</Window>
