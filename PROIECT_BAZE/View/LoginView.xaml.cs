@@ -78,5 +78,13 @@ namespace PROIECT_BAZE.View
         {
 
         }
+
+        private void CreateAccount_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            RegisterView register = new RegisterView();
+            register.Show();
+        }
+
+      
     }
 }

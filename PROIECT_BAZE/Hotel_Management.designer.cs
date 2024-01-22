@@ -39,9 +39,6 @@ namespace PROIECT_BAZE
     partial void InsertCamere(Camere instance);
     partial void UpdateCamere(Camere instance);
     partial void DeleteCamere(Camere instance);
-    partial void InsertClienti(Clienti instance);
-    partial void UpdateClienti(Clienti instance);
-    partial void DeleteClienti(Clienti instance);
     partial void InsertControale_Calitate(Controale_Calitate instance);
     partial void UpdateControale_Calitate(Controale_Calitate instance);
     partial void DeleteControale_Calitate(Controale_Calitate instance);
@@ -72,10 +69,19 @@ namespace PROIECT_BAZE
     partial void InsertRezervari_Camere(Rezervari_Camere instance);
     partial void UpdateRezervari_Camere(Rezervari_Camere instance);
     partial void DeleteRezervari_Camere(Rezervari_Camere instance);
+    partial void InsertEvenimente(Evenimente instance);
+    partial void UpdateEvenimente(Evenimente instance);
+    partial void DeleteEvenimente(Evenimente instance);
+    partial void InsertRestaurant(Restaurant instance);
+    partial void UpdateRestaurant(Restaurant instance);
+    partial void DeleteRestaurant(Restaurant instance);
+    partial void InsertClienti(Clienti instance);
+    partial void UpdateClienti(Clienti instance);
+    partial void DeleteClienti(Clienti instance);
     #endregion
 		
 		public Hotel_ManagementDataContext() : 
-				base(global::PROIECT_BAZE.Properties.Settings.Default.Hotel_ManagementConnectionString, mappingSource)
+				base(global::PROIECT_BAZE.Properties.Settings.Default.Hotel_ManagementConnectionString1, mappingSource)
 		{
 			OnCreated();
 		}
@@ -125,14 +131,6 @@ namespace PROIECT_BAZE
 			get
 			{
 				return this.GetTable<Camere>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Clienti> Clientis
-		{
-			get
-			{
-				return this.GetTable<Clienti>();
 			}
 		}
 		
@@ -213,6 +211,30 @@ namespace PROIECT_BAZE
 			get
 			{
 				return this.GetTable<Rezervari_Camere>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Evenimente> Evenimentes
+		{
+			get
+			{
+				return this.GetTable<Evenimente>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Restaurant> Restaurants
+		{
+			get
+			{
+				return this.GetTable<Restaurant>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Clienti> Clientis
+		{
+			get
+			{
+				return this.GetTable<Clienti>();
 			}
 		}
 	}
@@ -875,272 +897,6 @@ namespace PROIECT_BAZE
 		{
 			this.SendPropertyChanging();
 			entity.Camere = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Clienti")]
-	public partial class Clienti : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _ID_Client;
-		
-		private string _Email;
-		
-		private string _Telefon;
-		
-		private string _Nume;
-		
-		private string _Username;
-		
-		private string _Parola;
-		
-		private EntitySet<Plati> _Platis;
-		
-		private EntitySet<Recenzii> _Recenziis;
-		
-		private EntitySet<Rezervari> _Rezervaris;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnID_ClientChanging(int value);
-    partial void OnID_ClientChanged();
-    partial void OnEmailChanging(string value);
-    partial void OnEmailChanged();
-    partial void OnTelefonChanging(string value);
-    partial void OnTelefonChanged();
-    partial void OnNumeChanging(string value);
-    partial void OnNumeChanged();
-    partial void OnUsernameChanging(string value);
-    partial void OnUsernameChanged();
-    partial void OnParolaChanging(string value);
-    partial void OnParolaChanged();
-    #endregion
-		
-		public Clienti()
-		{
-			this._Platis = new EntitySet<Plati>(new Action<Plati>(this.attach_Platis), new Action<Plati>(this.detach_Platis));
-			this._Recenziis = new EntitySet<Recenzii>(new Action<Recenzii>(this.attach_Recenziis), new Action<Recenzii>(this.detach_Recenziis));
-			this._Rezervaris = new EntitySet<Rezervari>(new Action<Rezervari>(this.attach_Rezervaris), new Action<Rezervari>(this.detach_Rezervaris));
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Client", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int ID_Client
-		{
-			get
-			{
-				return this._ID_Client;
-			}
-			set
-			{
-				if ((this._ID_Client != value))
-				{
-					this.OnID_ClientChanging(value);
-					this.SendPropertyChanging();
-					this._ID_Client = value;
-					this.SendPropertyChanged("ID_Client");
-					this.OnID_ClientChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(100)")]
-		public string Email
-		{
-			get
-			{
-				return this._Email;
-			}
-			set
-			{
-				if ((this._Email != value))
-				{
-					this.OnEmailChanging(value);
-					this.SendPropertyChanging();
-					this._Email = value;
-					this.SendPropertyChanged("Email");
-					this.OnEmailChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Telefon", DbType="VarChar(20)")]
-		public string Telefon
-		{
-			get
-			{
-				return this._Telefon;
-			}
-			set
-			{
-				if ((this._Telefon != value))
-				{
-					this.OnTelefonChanging(value);
-					this.SendPropertyChanging();
-					this._Telefon = value;
-					this.SendPropertyChanged("Telefon");
-					this.OnTelefonChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nume", DbType="VarChar(50)")]
-		public string Nume
-		{
-			get
-			{
-				return this._Nume;
-			}
-			set
-			{
-				if ((this._Nume != value))
-				{
-					this.OnNumeChanging(value);
-					this.SendPropertyChanging();
-					this._Nume = value;
-					this.SendPropertyChanged("Nume");
-					this.OnNumeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Username", DbType="VarChar(50)")]
-		public string Username
-		{
-			get
-			{
-				return this._Username;
-			}
-			set
-			{
-				if ((this._Username != value))
-				{
-					this.OnUsernameChanging(value);
-					this.SendPropertyChanging();
-					this._Username = value;
-					this.SendPropertyChanged("Username");
-					this.OnUsernameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Parola", DbType="VarChar(50)")]
-		public string Parola
-		{
-			get
-			{
-				return this._Parola;
-			}
-			set
-			{
-				if ((this._Parola != value))
-				{
-					this.OnParolaChanging(value);
-					this.SendPropertyChanging();
-					this._Parola = value;
-					this.SendPropertyChanged("Parola");
-					this.OnParolaChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Clienti_Plati", Storage="_Platis", ThisKey="ID_Client", OtherKey="ID_Client")]
-		public EntitySet<Plati> Platis
-		{
-			get
-			{
-				return this._Platis;
-			}
-			set
-			{
-				this._Platis.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Clienti_Recenzii", Storage="_Recenziis", ThisKey="ID_Client", OtherKey="ID_Client")]
-		public EntitySet<Recenzii> Recenziis
-		{
-			get
-			{
-				return this._Recenziis;
-			}
-			set
-			{
-				this._Recenziis.Assign(value);
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Clienti_Rezervari", Storage="_Rezervaris", ThisKey="ID_Client", OtherKey="ID_Client")]
-		public EntitySet<Rezervari> Rezervaris
-		{
-			get
-			{
-				return this._Rezervaris;
-			}
-			set
-			{
-				this._Rezervaris.Assign(value);
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-		
-		private void attach_Platis(Plati entity)
-		{
-			this.SendPropertyChanging();
-			entity.Clienti = this;
-		}
-		
-		private void detach_Platis(Plati entity)
-		{
-			this.SendPropertyChanging();
-			entity.Clienti = null;
-		}
-		
-		private void attach_Recenziis(Recenzii entity)
-		{
-			this.SendPropertyChanging();
-			entity.Clienti = this;
-		}
-		
-		private void detach_Recenziis(Recenzii entity)
-		{
-			this.SendPropertyChanging();
-			entity.Clienti = null;
-		}
-		
-		private void attach_Rezervaris(Rezervari entity)
-		{
-			this.SendPropertyChanging();
-			entity.Clienti = this;
-		}
-		
-		private void detach_Rezervaris(Rezervari entity)
-		{
-			this.SendPropertyChanging();
-			entity.Clienti = null;
 		}
 	}
 	
@@ -1885,9 +1641,9 @@ namespace PROIECT_BAZE
 		
 		private EntityRef<Angajati> _Angajati;
 		
-		private EntityRef<Clienti> _Clienti;
-		
 		private EntityRef<Rezervari> _Rezervari;
+		
+		private EntityRef<Clienti> _Clienti;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1912,8 +1668,8 @@ namespace PROIECT_BAZE
 		public Plati()
 		{
 			this._Angajati = default(EntityRef<Angajati>);
-			this._Clienti = default(EntityRef<Clienti>);
 			this._Rezervari = default(EntityRef<Rezervari>);
+			this._Clienti = default(EntityRef<Clienti>);
 			OnCreated();
 		}
 		
@@ -2103,40 +1859,6 @@ namespace PROIECT_BAZE
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Clienti_Plati", Storage="_Clienti", ThisKey="ID_Client", OtherKey="ID_Client", IsForeignKey=true)]
-		public Clienti Clienti
-		{
-			get
-			{
-				return this._Clienti.Entity;
-			}
-			set
-			{
-				Clienti previousValue = this._Clienti.Entity;
-				if (((previousValue != value) 
-							|| (this._Clienti.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Clienti.Entity = null;
-						previousValue.Platis.Remove(this);
-					}
-					this._Clienti.Entity = value;
-					if ((value != null))
-					{
-						value.Platis.Add(this);
-						this._ID_Client = value.ID_Client;
-					}
-					else
-					{
-						this._ID_Client = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("Clienti");
-				}
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Rezervari_Plati", Storage="_Rezervari", ThisKey="ID_Rezervare", OtherKey="ID_Rezervare", IsForeignKey=true)]
 		public Rezervari Rezervari
 		{
@@ -2167,6 +1889,40 @@ namespace PROIECT_BAZE
 						this._ID_Rezervare = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("Rezervari");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Clienti_Plati", Storage="_Clienti", ThisKey="ID_Client", OtherKey="ID_Client", IsForeignKey=true)]
+		public Clienti Clienti
+		{
+			get
+			{
+				return this._Clienti.Entity;
+			}
+			set
+			{
+				Clienti previousValue = this._Clienti.Entity;
+				if (((previousValue != value) 
+							|| (this._Clienti.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Clienti.Entity = null;
+						previousValue.Platis.Remove(this);
+					}
+					this._Clienti.Entity = value;
+					if ((value != null))
+					{
+						value.Platis.Add(this);
+						this._ID_Client = value.ID_Client;
+					}
+					else
+					{
+						this._ID_Client = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("Clienti");
 				}
 			}
 		}
@@ -3344,6 +3100,684 @@ namespace PROIECT_BAZE
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Evenimente")]
+	public partial class Evenimente : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID_Eveniment;
+		
+		private string _Nume;
+		
+		private string _Descriere;
+		
+		private System.Nullable<System.DateTime> _Data_Inceput;
+		
+		private System.Nullable<System.DateTime> _Data_Sfarsit;
+		
+		private string _Locatie;
+		
+		private string _Organizator;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnID_EvenimentChanging(int value);
+    partial void OnID_EvenimentChanged();
+    partial void OnNumeChanging(string value);
+    partial void OnNumeChanged();
+    partial void OnDescriereChanging(string value);
+    partial void OnDescriereChanged();
+    partial void OnData_InceputChanging(System.Nullable<System.DateTime> value);
+    partial void OnData_InceputChanged();
+    partial void OnData_SfarsitChanging(System.Nullable<System.DateTime> value);
+    partial void OnData_SfarsitChanged();
+    partial void OnLocatieChanging(string value);
+    partial void OnLocatieChanged();
+    partial void OnOrganizatorChanging(string value);
+    partial void OnOrganizatorChanged();
+    #endregion
+		
+		public Evenimente()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Eveniment", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID_Eveniment
+		{
+			get
+			{
+				return this._ID_Eveniment;
+			}
+			set
+			{
+				if ((this._ID_Eveniment != value))
+				{
+					this.OnID_EvenimentChanging(value);
+					this.SendPropertyChanging();
+					this._ID_Eveniment = value;
+					this.SendPropertyChanged("ID_Eveniment");
+					this.OnID_EvenimentChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nume", DbType="NVarChar(50)")]
+		public string Nume
+		{
+			get
+			{
+				return this._Nume;
+			}
+			set
+			{
+				if ((this._Nume != value))
+				{
+					this.OnNumeChanging(value);
+					this.SendPropertyChanging();
+					this._Nume = value;
+					this.SendPropertyChanged("Nume");
+					this.OnNumeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descriere", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string Descriere
+		{
+			get
+			{
+				return this._Descriere;
+			}
+			set
+			{
+				if ((this._Descriere != value))
+				{
+					this.OnDescriereChanging(value);
+					this.SendPropertyChanging();
+					this._Descriere = value;
+					this.SendPropertyChanged("Descriere");
+					this.OnDescriereChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Data_Inceput", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Data_Inceput
+		{
+			get
+			{
+				return this._Data_Inceput;
+			}
+			set
+			{
+				if ((this._Data_Inceput != value))
+				{
+					this.OnData_InceputChanging(value);
+					this.SendPropertyChanging();
+					this._Data_Inceput = value;
+					this.SendPropertyChanged("Data_Inceput");
+					this.OnData_InceputChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Data_Sfarsit", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Data_Sfarsit
+		{
+			get
+			{
+				return this._Data_Sfarsit;
+			}
+			set
+			{
+				if ((this._Data_Sfarsit != value))
+				{
+					this.OnData_SfarsitChanging(value);
+					this.SendPropertyChanging();
+					this._Data_Sfarsit = value;
+					this.SendPropertyChanged("Data_Sfarsit");
+					this.OnData_SfarsitChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Locatie", DbType="NVarChar(100)")]
+		public string Locatie
+		{
+			get
+			{
+				return this._Locatie;
+			}
+			set
+			{
+				if ((this._Locatie != value))
+				{
+					this.OnLocatieChanging(value);
+					this.SendPropertyChanging();
+					this._Locatie = value;
+					this.SendPropertyChanged("Locatie");
+					this.OnLocatieChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Organizator", DbType="NVarChar(50)")]
+		public string Organizator
+		{
+			get
+			{
+				return this._Organizator;
+			}
+			set
+			{
+				if ((this._Organizator != value))
+				{
+					this.OnOrganizatorChanging(value);
+					this.SendPropertyChanging();
+					this._Organizator = value;
+					this.SendPropertyChanged("Organizator");
+					this.OnOrganizatorChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Restaurant")]
+	public partial class Restaurant : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID_Mancare;
+		
+		private string _Nume;
+		
+		private string _Descriere;
+		
+		private System.Nullable<decimal> _Pret;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnID_MancareChanging(int value);
+    partial void OnID_MancareChanged();
+    partial void OnNumeChanging(string value);
+    partial void OnNumeChanged();
+    partial void OnDescriereChanging(string value);
+    partial void OnDescriereChanged();
+    partial void OnPretChanging(System.Nullable<decimal> value);
+    partial void OnPretChanged();
+    #endregion
+		
+		public Restaurant()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Mancare", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID_Mancare
+		{
+			get
+			{
+				return this._ID_Mancare;
+			}
+			set
+			{
+				if ((this._ID_Mancare != value))
+				{
+					this.OnID_MancareChanging(value);
+					this.SendPropertyChanging();
+					this._ID_Mancare = value;
+					this.SendPropertyChanged("ID_Mancare");
+					this.OnID_MancareChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nume", DbType="NVarChar(50)")]
+		public string Nume
+		{
+			get
+			{
+				return this._Nume;
+			}
+			set
+			{
+				if ((this._Nume != value))
+				{
+					this.OnNumeChanging(value);
+					this.SendPropertyChanging();
+					this._Nume = value;
+					this.SendPropertyChanged("Nume");
+					this.OnNumeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descriere", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string Descriere
+		{
+			get
+			{
+				return this._Descriere;
+			}
+			set
+			{
+				if ((this._Descriere != value))
+				{
+					this.OnDescriereChanging(value);
+					this.SendPropertyChanging();
+					this._Descriere = value;
+					this.SendPropertyChanged("Descriere");
+					this.OnDescriereChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Pret", DbType="Decimal(10,2)")]
+		public System.Nullable<decimal> Pret
+		{
+			get
+			{
+				return this._Pret;
+			}
+			set
+			{
+				if ((this._Pret != value))
+				{
+					this.OnPretChanging(value);
+					this.SendPropertyChanging();
+					this._Pret = value;
+					this.SendPropertyChanged("Pret");
+					this.OnPretChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Clienti")]
+	public partial class Clienti : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID_Client;
+		
+		private string _Email;
+		
+		private string _Telefon;
+		
+		private string _Nume;
+		
+		private string _Username;
+		
+		private string _Parola;
+		
+		private System.Nullable<int> _Varsta;
+		
+		private System.Nullable<System.DateTime> _DataNastere;
+		
+		private string _Adresa;
+		
+		private EntitySet<Plati> _Platis;
+		
+		private EntitySet<Recenzii> _Recenziis;
+		
+		private EntitySet<Rezervari> _Rezervaris;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnID_ClientChanging(int value);
+    partial void OnID_ClientChanged();
+    partial void OnEmailChanging(string value);
+    partial void OnEmailChanged();
+    partial void OnTelefonChanging(string value);
+    partial void OnTelefonChanged();
+    partial void OnNumeChanging(string value);
+    partial void OnNumeChanged();
+    partial void OnUsernameChanging(string value);
+    partial void OnUsernameChanged();
+    partial void OnParolaChanging(string value);
+    partial void OnParolaChanged();
+    partial void OnVarstaChanging(System.Nullable<int> value);
+    partial void OnVarstaChanged();
+    partial void OnDataNastereChanging(System.Nullable<System.DateTime> value);
+    partial void OnDataNastereChanged();
+    partial void OnAdresaChanging(string value);
+    partial void OnAdresaChanged();
+    #endregion
+		
+		public Clienti()
+		{
+			this._Platis = new EntitySet<Plati>(new Action<Plati>(this.attach_Platis), new Action<Plati>(this.detach_Platis));
+			this._Recenziis = new EntitySet<Recenzii>(new Action<Recenzii>(this.attach_Recenziis), new Action<Recenzii>(this.detach_Recenziis));
+			this._Rezervaris = new EntitySet<Rezervari>(new Action<Rezervari>(this.attach_Rezervaris), new Action<Rezervari>(this.detach_Rezervaris));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID_Client", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ID_Client
+		{
+			get
+			{
+				return this._ID_Client;
+			}
+			set
+			{
+				if ((this._ID_Client != value))
+				{
+					this.OnID_ClientChanging(value);
+					this.SendPropertyChanging();
+					this._ID_Client = value;
+					this.SendPropertyChanged("ID_Client");
+					this.OnID_ClientChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Email", DbType="VarChar(100)")]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this.OnEmailChanging(value);
+					this.SendPropertyChanging();
+					this._Email = value;
+					this.SendPropertyChanged("Email");
+					this.OnEmailChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Telefon", DbType="VarChar(20)")]
+		public string Telefon
+		{
+			get
+			{
+				return this._Telefon;
+			}
+			set
+			{
+				if ((this._Telefon != value))
+				{
+					this.OnTelefonChanging(value);
+					this.SendPropertyChanging();
+					this._Telefon = value;
+					this.SendPropertyChanged("Telefon");
+					this.OnTelefonChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Nume", DbType="VarChar(50)")]
+		public string Nume
+		{
+			get
+			{
+				return this._Nume;
+			}
+			set
+			{
+				if ((this._Nume != value))
+				{
+					this.OnNumeChanging(value);
+					this.SendPropertyChanging();
+					this._Nume = value;
+					this.SendPropertyChanged("Nume");
+					this.OnNumeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Username", DbType="VarChar(50)")]
+		public string Username
+		{
+			get
+			{
+				return this._Username;
+			}
+			set
+			{
+				if ((this._Username != value))
+				{
+					this.OnUsernameChanging(value);
+					this.SendPropertyChanging();
+					this._Username = value;
+					this.SendPropertyChanged("Username");
+					this.OnUsernameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Parola", DbType="VarChar(50)")]
+		public string Parola
+		{
+			get
+			{
+				return this._Parola;
+			}
+			set
+			{
+				if ((this._Parola != value))
+				{
+					this.OnParolaChanging(value);
+					this.SendPropertyChanging();
+					this._Parola = value;
+					this.SendPropertyChanged("Parola");
+					this.OnParolaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Varsta", DbType="Int")]
+		public System.Nullable<int> Varsta
+		{
+			get
+			{
+				return this._Varsta;
+			}
+			set
+			{
+				if ((this._Varsta != value))
+				{
+					this.OnVarstaChanging(value);
+					this.SendPropertyChanging();
+					this._Varsta = value;
+					this.SendPropertyChanged("Varsta");
+					this.OnVarstaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataNastere", DbType="Date")]
+		public System.Nullable<System.DateTime> DataNastere
+		{
+			get
+			{
+				return this._DataNastere;
+			}
+			set
+			{
+				if ((this._DataNastere != value))
+				{
+					this.OnDataNastereChanging(value);
+					this.SendPropertyChanging();
+					this._DataNastere = value;
+					this.SendPropertyChanged("DataNastere");
+					this.OnDataNastereChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Adresa", DbType="VarChar(150)")]
+		public string Adresa
+		{
+			get
+			{
+				return this._Adresa;
+			}
+			set
+			{
+				if ((this._Adresa != value))
+				{
+					this.OnAdresaChanging(value);
+					this.SendPropertyChanging();
+					this._Adresa = value;
+					this.SendPropertyChanged("Adresa");
+					this.OnAdresaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Clienti_Plati", Storage="_Platis", ThisKey="ID_Client", OtherKey="ID_Client")]
+		public EntitySet<Plati> Platis
+		{
+			get
+			{
+				return this._Platis;
+			}
+			set
+			{
+				this._Platis.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Clienti_Recenzii", Storage="_Recenziis", ThisKey="ID_Client", OtherKey="ID_Client")]
+		public EntitySet<Recenzii> Recenziis
+		{
+			get
+			{
+				return this._Recenziis;
+			}
+			set
+			{
+				this._Recenziis.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Clienti_Rezervari", Storage="_Rezervaris", ThisKey="ID_Client", OtherKey="ID_Client")]
+		public EntitySet<Rezervari> Rezervaris
+		{
+			get
+			{
+				return this._Rezervaris;
+			}
+			set
+			{
+				this._Rezervaris.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_Platis(Plati entity)
+		{
+			this.SendPropertyChanging();
+			entity.Clienti = this;
+		}
+		
+		private void detach_Platis(Plati entity)
+		{
+			this.SendPropertyChanging();
+			entity.Clienti = null;
+		}
+		
+		private void attach_Recenziis(Recenzii entity)
+		{
+			this.SendPropertyChanging();
+			entity.Clienti = this;
+		}
+		
+		private void detach_Recenziis(Recenzii entity)
+		{
+			this.SendPropertyChanging();
+			entity.Clienti = null;
+		}
+		
+		private void attach_Rezervaris(Rezervari entity)
+		{
+			this.SendPropertyChanging();
+			entity.Clienti = this;
+		}
+		
+		private void detach_Rezervaris(Rezervari entity)
+		{
+			this.SendPropertyChanging();
+			entity.Clienti = null;
 		}
 	}
 }

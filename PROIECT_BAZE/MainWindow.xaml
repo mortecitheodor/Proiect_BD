@@ -202,7 +202,7 @@
 
 
                 </StackPanel>
-                <ScrollViewer VerticalScrollBarVisibility="Auto" Grid.Row="1" Margin="108,44,10,10" Grid.Column="1" Background="Beige">
+                <ScrollViewer x:Name="ScrollViewer" VerticalScrollBarVisibility="Auto" Grid.Row="1" Margin="108,44,10,10" Grid.Column="1" Background="Beige" Visibility="Visible">
 
                     <RichTextBox x:Name="richTextBox" VerticalScrollBarVisibility="Auto" Foreground="#2b5432" Height="456" Background="Beige">
                         <FlowDocument>
@@ -255,6 +255,140 @@
 
                 </ScrollViewer>
                 <Image Source="D:\ANUL III\SEM I\PROIECTBD\PROIECT_BAZE\PROIECT_BAZE\Images\NoBackgroundLOGO.png" HorizontalAlignment="Left" Height="183" VerticalAlignment="Top" Width="250" Grid.ColumnSpan="2" Grid.Row="1"/>
+                <StackPanel x:Name="Restaurant" Grid.Row="1" Grid.Column="1" Margin="0,100,0,0" Visibility="Collapsed">
+                    <RichTextBox x:Name="RestaurantText" Grid.Column="1" Grid.Row="1" Background="Beige"
+                                 Foreground="#2b5432"
+FontSize="12"
+FontWeight="Bold"
+FontFamily="Montserrat" 
+                                 Margin="37,10,88,35" Height="377">
+                        <FlowDocument>
+
+                            <BlockUIContainer>
+                                <!-- Place your image here -->
+                                <Image Source="D:\ANUL III\SEM I\PROIECTBD\PROIECT_BAZE\PROIECT_BAZE\Images\RESORT.jpg" Width="200" Height="100" Margin="10"/>
+                            </BlockUIContainer>
+                            <Paragraph>
+                            </Paragraph>
+                        </FlowDocument>
+                    </RichTextBox>
+                </StackPanel>
+
+                <StackPanel x:Name="Accomodation" Grid.Row="1" Grid.Column="1" Margin="0,100,0,0" Visibility="Collapsed">
+                    <RichTextBox x:Name="AccomodationText" Grid.Column="1" Grid.Row="1" Background="Beige"
+                                 Foreground="#2b5432"
+FontSize="12"
+FontWeight="Bold"
+FontFamily="Montserrat" 
+                                 Margin="37,10,88,35" Height="377">
+                        <FlowDocument>
+                            <Paragraph>
+                                <Run Text="RichTextBox"/>
+                            </Paragraph>
+                        </FlowDocument>
+                    </RichTextBox>
+                </StackPanel>
+
+                <StackPanel x:Name="Spa" Grid.Row="1" Grid.Column="1" Margin="0,100,0,0" Visibility="Collapsed">
+                    <RichTextBox x:Name="SpaText" Grid.Column="1" Grid.Row="1" Background="Beige"
+                                 Foreground="#2b5432"
+FontSize="12"
+FontWeight="Bold"
+FontFamily="Montserrat" 
+                                 Margin="37,10,88,35" Height="377">
+                        <FlowDocument>
+                            <Paragraph>
+                                <Run Text="RichText"/>
+                            </Paragraph>
+                        </FlowDocument>
+                    </RichTextBox>
+                </StackPanel>
+
+                <StackPanel x:Name="Events" Grid.Row="1" Grid.Column="1" Margin="0,100,0,0" Visibility="Collapsed">
+                    <RichTextBox x:Name="EventsText" Grid.Column="1" Grid.Row="1" Background="Beige"
+                                 Foreground="#2b5432"
+FontSize="12"
+FontWeight="Bold"
+FontFamily="Montserrat" 
+                                 Margin="37,10,88,35" Height="377">
+                        <FlowDocument>
+                            <Paragraph>
+                                <Run Text="RichTextBox"/>
+                            </Paragraph>
+                        </FlowDocument>
+                    </RichTextBox>
+                </StackPanel>
+
+                <StackPanel x:Name="Review" Grid.Row="1" Grid.Column="1" Margin="0,100,0,0" Visibility="Collapsed">
+                    <RichTextBox x:Name="reviewText" Grid.Column="1" Grid.Row="1" Background="Beige"
+                                 Foreground="#2b5432"
+FontSize="12"
+FontWeight="Bold"
+FontFamily="Montserrat" 
+                                 Margin="37,10,88,35" Height="377">
+                        <FlowDocument>
+                            <Paragraph>
+                                <Run Text="RichTextBox"/>
+                            </Paragraph>
+                        </FlowDocument>
+                    </RichTextBox>
+                </StackPanel>
+
+                <StackPanel x:Name="Contact" Grid.Row="1" Grid.Column="1" Margin="0,100,0,0" Visibility="Collapsed">
+                    <RichTextBox x:Name="ContactText" Grid.Column="1" Grid.Row="1" Background="Beige"
+                                 Foreground="#2b5432"
+FontSize="12"
+FontWeight="Bold"
+FontFamily="Montserrat" 
+                                 Margin="37,10,88,35" Height="377">
+                        <FlowDocument>
+                            <Paragraph>
+                                <Run Text="RichTextBox"/>
+                            </Paragraph>
+                        </FlowDocument>
+                    </RichTextBox>
+                </StackPanel>
+
+                <StackPanel x:Name="galery" Grid.Row="1" Grid.Column="1" Margin="37,100,56,42" Visibility="Collapsed">
+                    
+                    <RichTextBox x:Name="galeryText"
+                                 Foreground="#2b5432"
+FontSize="12"
+FontWeight="Bold"
+FontFamily="Montserrat" 
+                                 Grid.Column="1" Grid.Row="1" Height="377" Background="Beige">
+
+                        <FlowDocument>
+                            <BlockUIContainer>
+                                <!-- Place your image here -->
+                                <Image Source="C:\Users\HOME\Downloads\PROIECT_BAZE_theo\PROIECT_BAZE\Images\SPA.jpg" Width="216" Height="100"/>
+                            </BlockUIContainer>
+                            <BlockUIContainer>
+                                <!-- Place your image here -->
+                                <Image Source="C:\Users\HOME\Downloads\PROIECT_BAZE_theo\PROIECT_BAZE\Images\SPA2.jpg" Width="216" Height="100" Margin="0,20,0,0"/>
+                            </BlockUIContainer>
+                            <BlockUIContainer>
+                                <!-- Place your image here -->
+                                <Image Source="C:\Users\HOME\Downloads\PROIECT_BAZE_theo\PROIECT_BAZE\Images\SPA3.jpg" Width="216" Height="100" Margin="0,20,0,0"/>
+                            </BlockUIContainer>
+                            <BlockUIContainer>
+                            <!-- Place your image here -->
+                            <Image Source="C:\Users\HOME\Downloads\PROIECT_BAZE_theo\PROIECT_BAZE\Images\restaurant1.jpg" Width="216" Height="100" Margin="0,20,0,0"/>
+                            </BlockUIContainer>
+                            <BlockUIContainer>
+                                <!-- Place your image here -->
+                                <Image Source="C:\Users\HOME\Downloads\PROIECT_BAZE_theo\PROIECT_BAZE\Images\restaurant2.jpg" Width="216" Height="100" Margin="0,20,0,0"/>
+                            </BlockUIContainer>
+                            <BlockUIContainer>
+                                <!-- Place your image here -->
+                                <Image Source="C:\Users\HOME\Downloads\PROIECT_BAZE_theo\PROIECT_BAZE\Images\restaurant4.jpg" Width="216" Height="100" Margin="0,20,0,0"/>
+                            </BlockUIContainer>
+                            <Paragraph>
+                                <Run Text=""/>
+                            </Paragraph>
+                        </FlowDocument>
+                    </RichTextBox>
+                </StackPanel>
             </Grid>
         </Border>
     </Border>

@@ -26,11 +26,22 @@ namespace PROIECT_BAZE.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-JAO4LI5;Initial Catalog=Hotel_Management;Integrated Security=" +
-            "True;Encrypt=True;TrustServerCertificate=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=LAPTOP-MARA;Initial Catalog=Hotel_Management;Integrated Security=True" +
+            ";Encrypt=True;TrustServerCertificate=True")]
         public string Hotel_ManagementConnectionString {
             get {
                 return ((string)(this["Hotel_ManagementConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-JAO4LI5;Initial Catalog=Hotel_Management;Integrated Security=" +
+            "True;Encrypt=True;TrustServerCertificate=True")]
+        public string Hotel_ManagementConnectionString1 {
+            get {
+                return ((string)(this["Hotel_ManagementConnectionString1"]));
             }
         }
     }

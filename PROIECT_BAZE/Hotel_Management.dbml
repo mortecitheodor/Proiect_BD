@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="Hotel_Management" Class="Hotel_ManagementDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-JAO4LI5;Initial Catalog=Hotel_Management;Integrated Security=True;Encrypt=True;Trust Server Certificate=True" SettingsObjectName="PROIECT_BAZE.Properties.Settings" SettingsPropertyName="Hotel_ManagementConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-JAO4LI5;Initial Catalog=Hotel_Management;Integrated Security=True;Encrypt=True;Trust Server Certificate=True" SettingsObjectName="PROIECT_BAZE.Properties.Settings" SettingsPropertyName="Hotel_ManagementConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Achizitii" Member="Achizitiis">
     <Type Name="Achizitii">
       <Column Name="ID_Achizitie" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -30,19 +30,6 @@
       <Column Name="Nr_Max_Persoane" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="Pret_Noapte" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
       <Association Name="Camere_Rezervari_Camere" Member="Rezervari_Cameres" ThisKey="ID_Camera" OtherKey="ID_Camera" Type="Rezervari_Camere" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Clienti" Member="Clientis">
-    <Type Name="Clienti">
-      <Column Name="ID_Client" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Email" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
-      <Column Name="Telefon" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
-      <Column Name="Nume" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Username" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="Parola" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Association Name="Clienti_Plati" Member="Platis" ThisKey="ID_Client" OtherKey="ID_Client" Type="Plati" />
-      <Association Name="Clienti_Recenzii" Member="Recenziis" ThisKey="ID_Client" OtherKey="ID_Client" Type="Recenzii" />
-      <Association Name="Clienti_Rezervari" Member="Rezervaris" ThisKey="ID_Client" OtherKey="ID_Client" Type="Rezervari" />
     </Type>
   </Table>
   <Table Name="dbo.Controale_Calitate" Member="Controale_Calitates">
@@ -92,8 +79,8 @@
       <Column Name="Data_Tranzactiei" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="Tipul_Tranzactiei" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Association Name="Angajati_Plati" Member="Angajati" ThisKey="ID_Angajat" OtherKey="ID_Angajat" Type="Angajati" IsForeignKey="true" />
-      <Association Name="Clienti_Plati" Member="Clienti" ThisKey="ID_Client" OtherKey="ID_Client" Type="Clienti" IsForeignKey="true" />
       <Association Name="Rezervari_Plati" Member="Rezervari" ThisKey="ID_Rezervare" OtherKey="ID_Rezervare" Type="Rezervari" IsForeignKey="true" />
+      <Association Name="Clienti_Plati" Member="Clienti" ThisKey="ID_Client" OtherKey="ID_Client" Type="Clienti" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Produse" Member="Produses">
@@ -150,6 +137,41 @@
       <Column Name="ID_Camera" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Association Name="Camere_Rezervari_Camere" Member="Camere" ThisKey="ID_Camera" OtherKey="ID_Camera" Type="Camere" IsForeignKey="true" />
       <Association Name="Rezervari_Rezervari_Camere" Member="Rezervari" ThisKey="ID_Rezervare" OtherKey="ID_Rezervare" Type="Rezervari" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Evenimente" Member="Evenimentes">
+    <Type Name="Evenimente">
+      <Column Name="ID_Eveniment" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nume" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Descriere" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Data_Inceput" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Data_Sfarsit" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Locatie" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Organizator" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Restaurant" Member="Restaurants">
+    <Type Name="Restaurant">
+      <Column Name="ID_Mancare" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nume" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Descriere" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Pret" Type="System.Decimal" DbType="Decimal(10,2)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Clienti" Member="Clientis">
+    <Type Name="Clienti">
+      <Column Name="ID_Client" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Telefon" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Nume" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Username" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Parola" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Varsta" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DataNastere" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Adresa" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Association Name="Clienti_Plati" Member="Platis" ThisKey="ID_Client" OtherKey="ID_Client" Type="Plati" />
+      <Association Name="Clienti_Recenzii" Member="Recenziis" ThisKey="ID_Client" OtherKey="ID_Client" Type="Recenzii" />
+      <Association Name="Clienti_Rezervari" Member="Rezervaris" ThisKey="ID_Client" OtherKey="ID_Client" Type="Rezervari" />
     </Type>
   </Table>
 </Database>

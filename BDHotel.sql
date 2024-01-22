@@ -25,6 +25,53 @@ INSERT INTO Clienti (Email, Telefon, Nume, Username, Parola) VALUES
 ('client9@example.com', '5551117777', 'Ava Garcia', 'ava_g', 'letmein'),
 ('client10@example.com', '2224446666', 'Ethan Nguyen', 'ethan_n', '123456789');
 
+ALTER TABLE Clienti
+ADD Varsta INT,
+    DataNastere DATE;
+
+UPDATE Clienti
+SET Varsta = 25, DataNastere = '1997-02-10'
+WHERE Nume = 'John Doe';
+
+UPDATE Clienti
+SET Varsta = 28, DataNastere = '1994-08-23'
+WHERE Nume = 'Alice Smith';
+
+UPDATE Clienti
+SET Varsta = 30, DataNastere = '1992-05-20'
+WHERE Nume = 'Emma Johnson';
+
+UPDATE Clienti
+SET Varsta = 35, DataNastere = '1987-11-05'
+WHERE Nume = 'Michael Brown';
+
+UPDATE Clienti
+SET Varsta = 28, DataNastere = '1993-09-18'
+WHERE Nume = 'Ethan Nguyen';
+
+UPDATE Clienti
+SET Varsta = 23, DataNastere = '1999-07-02'
+WHERE Nume = 'Sophia Wilson';
+
+UPDATE Clienti
+SET Varsta = 32, DataNastere = '1990-04-15'
+WHERE Nume = 'William Taylor';
+
+UPDATE Clienti
+SET Varsta = 27, DataNastere = '1995-12-28'
+WHERE Nume = 'Olivia Anderson';
+
+UPDATE Clienti
+SET Varsta = 29, DataNastere = '1993-03-22'
+WHERE Nume = 'Daniel Martinez';
+
+UPDATE Clienti
+SET Varsta = 31, DataNastere = '1991-08-14'
+WHERE Nume = 'Ava Garcia';
+
+ALTER TABLE Clienti
+ADD Adresa VARCHAR(150);
+
 
 CREATE TABLE Recenzii (
     ID_Recenzie INT IDENTITY(1,1) PRIMARY KEY, 
@@ -270,6 +317,40 @@ INSERT INTO Controale_Calitate (Tip_Control, Data_Controlului, ID_Raport) VALUES
 ('Verificare echipamente', '2023-10-25', 3),
 ('Siguranta', '2023-11-02', 4),
 ('Servicii oferite', '2023-11-10', 5);
+
+CREATE TABLE Evenimente (
+    ID_Eveniment INT IDENTITY(1,1) PRIMARY KEY, 
+    Nume NVARCHAR(50),
+    Descriere TEXT,
+    Data_Inceput DATETIME,
+    Data_Sfarsit DATETIME,
+    Locatie NVARCHAR(100),
+    Organizator NVARCHAR(50)
+);
+
+INSERT INTO Evenimente (Nume, Descriere, Data_Inceput, Data_Sfarsit, Locatie, Organizator) VALUES 
+('Conferinta Anuala', 'Eveniment de networking si prezentare de noi tehnologii.', '2024-03-15 09:00', '2024-03-15 17:00', 'Sala de conferinte', 'Compania X'),
+('Petrecere de Revelion', 'Sarbatoare de Anul Nou cu muzica live si artificii.', '2024-12-31 21:00', '2025-01-01 03:00', 'Salonul de evenimente', 'Hotel Management'),
+('Seminariu Wellness', 'Zi de relaxare si activitati de wellness.', '2024-05-20 10:00', '2024-05-20 16:00', 'Spa & Centru Wellness', 'Fitness Experts'),
+('Lansare de Produse', 'Prezentare de produse si sesiuni de teste pentru clienti.', '2024-08-10 14:00', '2024-08-10 18:00', 'Holul principal', 'Compania Y'),
+('Curs de Gatit', 'Sesiuni practice de gatit sub indrumarea unui bucatar celebru.', '2024-06-05 17:30', '2024-06-05 20:30', 'Bucataria restaurantului', 'Chef Gourmet');
+
+
+CREATE TABLE Restaurant (
+    ID_Mancare INT IDENTITY(1,1) PRIMARY KEY,
+    Nume NVARCHAR(50),
+    Descriere TEXT,
+    Pret DECIMAL(10, 2)
+);
+
+INSERT INTO Restaurant (Nume, Descriere, Pret) VALUES 
+('Omeleta la micul dejun', 'Omeleta cu oua proaspete, branza, sunca si legume.', 12.99),
+('Pui cu cartofi', 'Piept de pui la gratar cu cartofi prajiti si salata de legume.', 25.99),
+('Pizza Quattro Stagioni', 'Pizza cu sos de rosii, mozzarella, sunca, ciuperci, masline si ansoa.', 18.50),
+('Salata Caesar cu pui', 'Salata de la gratar cu piept de pui, crutoane, parmezan si dressing Caesar.', 15.75),
+('Filet de somon', 'Filet de somon la gratar cu garnitura de orez si sparanghel.', 28.00),
+('Tiramisu', 'Desert clasic italian cu strat de biscuiti Savoiardi si mascarpone.', 12.99);
+
 
 
 

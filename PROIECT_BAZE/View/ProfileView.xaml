@@ -12,7 +12,11 @@
        MouseDown="Window_MouseDown"
        Background="Transparent"
        AllowsTransparency="True">
+
+
     <Grid>
+
+
         <Border CornerRadius="12">
 
             <Border.Background>
@@ -133,7 +137,13 @@
                             </Button.Template>
                         </Button>
                     </Grid>
-                    <StackPanel Height="500"  Grid.Row="1" Background="Beige" VerticalAlignment="Top" Margin="10,0,0,0">
+                    <StackPanel Height="489"  Grid.Row="1"  VerticalAlignment="Top" Margin="10,0,0,0">
+                        <StackPanel.Background>
+                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                <GradientStop Offset="0" Color="Beige"/>
+                                <GradientStop Offset="1" Color="LightGreen"/>
+                            </LinearGradientBrush>
+                        </StackPanel.Background>
                         <ListView x:Name="listView" ScrollViewer.HorizontalScrollBarVisibility="Disabled" 
                               FontFamily="PanRoman" 
                               FontSize="14" 
@@ -185,14 +195,25 @@
 
 
                     </StackPanel>
-                    <TextBox x:Name="Nume_Client" VerticalAlignment="Top" HorizontalAlignment="Left" Width="190" Height="30"
-                     FontFamily="PanRoman" FontStyle="Normal" Foreground="Green" Background="Beige"
+
+                    <TextBox x:Name="Hello" VerticalAlignment="Top" HorizontalAlignment="Left" Width="190" Height="38"
+                     FontFamily="PanRoman" FontStyle="Normal" FontSize="40" Foreground="Green" Background="Transparent"
                      BorderBrush="Transparent" BorderThickness="0"
-                     Text="NUME SI PRENUME DIN BD"
-                     Margin="18,193,0,0" 
+                     Text="Hello,"
+                     Margin="18,40,0,0" 
+                     Grid.Row="1" 
+                     TextAlignment="Center"/>
+
+                    <TextBox x:Name="Nume_Client" VerticalAlignment="Top" HorizontalAlignment="Left" Width="190" Height="117"
+                     FontFamily="PanRoman" FontStyle="Normal" FontSize="40" Foreground="Green" Background="Transparent"
+                     BorderBrush="Transparent" BorderThickness="0"
+                     Text="NUME PRENUME DIN BD"
+                     Margin="18,120,0,0" 
                      Grid.Row="1" 
                      TextAlignment="Center" TextChanged="TextBox_TextChanged"/>
-                    <StackPanel x:Name="editFieldsPanel" Grid.Row="1" Grid.Column="1" Margin="0,100,0,0" Visibility="Collapsed">
+
+                    <StackPanel x:Name="editFieldsPanel" Grid.Row="1" Grid.Column="1" Margin="100,100,10,0" Visibility="Collapsed">
+
                         <TextBlock x:Name="txtNume1" Text="First Name:" Foreground="Beige" FontSize="15" Margin="100,10,10,0" />
                         <TextBox x:Name="txtNume" Text="{Binding Nume}" Margin="100,10,200,10"/>
 
@@ -204,16 +225,56 @@
 
                         <TextBlock x:Name="dpDataNasterii1" Text="Birth Date:" Foreground="Beige" FontSize="15" Margin="100,10,10,0" />
                         <DatePicker x:Name="dpDataNasterii" SelectedDate="{Binding DataNasterii}" Margin="100,10,200,10"/>
-                        <Button Content="Done" Height="30" Margin="200,10,300,10" Click="btnDone_Click" Grid.Column="1" Grid.Row="1" />
-                        <Button Content="Save" Height="30" Margin="200,10,300,10" Click="btnSave_Click" RenderTransformOrigin="-0.188,0.6" />
+                        <Button Content="Done" Height="30" Margin="100,10,200,10" Click="btnDone_Click" Grid.Column="1" Grid.Row="1" />
+                        <Button Content="Save" Height="30" Margin="100,10,200,10" Click="btnSave_Click" RenderTransformOrigin="-0.188,0.6" />
                     </StackPanel>
 
-                    
-                    
+                    <StackPanel x:Name="myBookingsFiled" Grid.Row="1" Grid.Column="1" Margin="0,100,0,0" Visibility="Collapsed">
+
+                        <DataGrid x:Name="gridBookings" d:ItemsSource="{d:SampleData ItemCount=0}" Height="377" Width="354">
+                            <DataGrid.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientStop Offset="0" Color="Beige"/>
+                                    <GradientStop Offset="1" Color="LightGreen"/>
+                                </LinearGradientBrush>
+                            </DataGrid.Background>
+                           
+                        </DataGrid>
+                    </StackPanel>
+
+                    <StackPanel x:Name="receiptsStack" Grid.Row="1" Grid.Column="1" Margin="0,100,0,0" Visibility="Collapsed">
+
+                        <DataGrid x:Name="gridReceipts" d:ItemsSource="{d:SampleData ItemCount=0}" Height="377" Width="354">
+                            <DataGrid.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientStop Offset="0" Color="Beige"/>
+                                    <GradientStop Offset="1" Color="LightGreen"/>
+                                </LinearGradientBrush>
+                            </DataGrid.Background>
+                            
+                        </DataGrid>
+                    </StackPanel>
+
+                    <StackPanel x:Name="myReviews" Grid.Row="1" Grid.Column="1" Margin="0,100,0,0" Visibility="Collapsed">
+                        <TextBox x:Name="textboxreview" TextWrapping="Wrap" Text="TextBox" Width="382" Height="351">
+                            <TextBox.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                    <GradientStop Offset="0" Color="Beige"/>
+                                    <GradientStop Offset="1" Color="LightGreen"/>
+                                </LinearGradientBrush>
+                            </TextBox.Background>
+                        </TextBox>
+                    </StackPanel>
+                    <Button x:Name="btnBack" Grid.Column="1" Content="Back" HorizontalAlignment="Left" Margin="509,480,0,0" Grid.Row="1" VerticalAlignment="Top" Click="btnBack_Click" Width="47" Background="Beige"/>
+
+
+
+
+
                 </Grid>
             </Border>
         </Border>
 
     </Grid>
-
 </Window>
+

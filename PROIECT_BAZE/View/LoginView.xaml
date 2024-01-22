@@ -241,18 +241,19 @@
                                 VerticalAlignment="Bottom"
                                 
                                 Margin="60,20,60,0">
-                        <TextBlock Text="Forgot password? "
+                        <TextBlock Text=" New customer ? "
                                 Foreground="#2b5432"
                                 FontSize="12"
                                 FontWeight="Bold"
                                 FontFamily="Montserrat"                             
                                />
-                        <TextBlock Text=" Reset password"
+                        <TextBlock x:Name="CreateAccount"
+                            Text=" Create account"
                                 Foreground="#2b5432"
                                 FontSize="12"
                                 FontWeight="Heavy"
                                 FontFamily="Montserrat" 
-                               Cursor="Hand"
+                               Cursor="Hand" MouseLeftButtonDown="CreateAccount_MouseLeftButtonDown"
                                 />
                     </StackPanel>
 
